@@ -1,0 +1,29 @@
+//variabili
+#define led 3
+#define trigger 12
+#define stop 13
+bool ispressed=false;
+void setup() {
+  //setup input/output
+  pinMode(led, OUTPUT);
+  pinMode(trigger, INPUT);
+  pinMode(stop, INPUT);
+  
+}
+
+void loop() {
+  //controllo bottone p1
+  if(digitalRead(trigger)>0 || ispressed==true){
+    digitalWrite(led, HIGH);
+    delay(1000);
+    digitalWrite(led, LOW);
+    delay(1000);
+    ispressed=true;
+  }
+  //controllo bottone p2
+  if(digitalRead(stop)>0){
+    digitalWrite(led, LOW);
+    ispressed=false;
+  }
+
+}

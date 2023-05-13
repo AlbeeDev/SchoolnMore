@@ -1,0 +1,201 @@
+
+public class UserData {
+    private String version;
+    private UserDataInfo userdata;
+    private AspectInfo aspect;
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public UserDataInfo getUserData() {
+        return userdata;
+    }
+
+    public void setUserData(UserDataInfo userData) {
+        this.userdata = userData;
+    }
+
+    public AspectInfo getAspect() {
+        return aspect;
+    }
+
+    public void setAspect(AspectInfo aspect) {
+        this.aspect = aspect;
+    }
+}
+
+class UserDataInfo {
+    private String username;
+    private String difficultyselect;
+    private Difficulty difficulty;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getDifficultyselect() {
+        return difficultyselect;
+    }
+
+    public void setDifficultyselect(String difficultyselect) {
+        this.difficultyselect = difficultyselect;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+}
+
+class Difficulty {
+    private Easy easy;
+    private Medium medium;
+    private Hard hard;
+
+    public Easy getEasy() {
+        return easy;
+    }
+
+    public void setEasy(Easy easy) {
+        this.easy = easy;
+    }
+
+    public Medium getMedium() {
+        return medium;
+    }
+
+    public void setMedium(Medium medium) {
+        this.medium = medium;
+    }
+
+    public Hard getHard() {
+        return hard;
+    }
+
+    public void setHard(Hard hard) {
+        this.hard = hard;
+    }
+}
+
+class Easy {
+    private int win;
+    private int lost;
+    private int attempts;
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
+    public int getLost() {
+        return lost;
+    }
+
+    public void setLost(int lost) {
+        this.lost = lost;
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+}
+
+class Medium {
+    private int win;
+    private int lost;
+    private int attempts;
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
+    public int getLost() {
+        return lost;
+    }
+
+    public void setLost(int lost) {
+        this.lost = lost;
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+}
+
+class Hard {
+    private int win;
+    private int lost;
+    private int attempts;
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
+    public int getLost() {
+        return lost;
+    }
+
+    public void setLost(int lost) {
+        this.lost = lost;
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+}
+
+class AspectInfo {
+    private boolean fullscreen;
+    private String theme;
+
+    public boolean isFullscreen() {
+        return fullscreen;
+    }
+
+    public void setFullscreen(boolean fullscreen) {
+        this.fullscreen = fullscreen;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+}

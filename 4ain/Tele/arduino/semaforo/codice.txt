@@ -1,0 +1,73 @@
+//variabili
+#define WALK_RED 3
+#define WALK_GREEN 2
+
+#define CAR_RED 10
+#define CAR_YELLOW 7
+#define CAR_GREEN 5
+
+#define BUTTON 12
+
+void setup()
+{
+  pinMode(WALK_RED, OUTPUT);
+  pinMode(WALK_GREEN, OUTPUT);
+ 
+  pinMode(CAR_RED, OUTPUT);
+  pinMode(CAR_YELLOW, OUTPUT);
+  pinMode(CAR_GREEN, OUTPUT);
+ 
+  pinMode(BUTTON, INPUT_PULLUP);
+}
+//led spenti
+void reset(){
+  digitalWrite(CAR_GREEN, LOW);
+  digitalWrite(CAR_YELLOW, LOW);
+  digitalWrite(CAR_RED, LOW);
+ 
+  digitalWrite(WALK_GREEN, LOW);
+  digitalWrite(WALK_RED, LOW);
+}
+
+void loop()
+{
+  //verde per le auto
+  digitalWrite(WALK_RED, HIGH);
+  digitalWrite(CAR_GREEN, HIGH);
+ 
+  if(digitalRead(BUTTON)>0){
+    //lampeggio giallo-verde
+    for(int i=0; i<30; ++i){
+      if(i%2){
+        digitalWrite(CAR_GREEN, LOW);
+        digitalWrite(CAR_YELLOW, HIGH);
+      }else{
+        digitalWrite(CAR_GREEN, HIGH);
+        digitalWrite(CAR_YELLOW, LOW);
+      }
+      delay(1*1000);
+    }
+    reset();
+    //verde per i pedoni
+    digitalWrite(WALK_GREEN, HIGH);
+    digitalWrite(CAR_RED, HIGH);
+    delay(20*1000);
+    reset();
+    //lampeggio verde
+    digitalWrite(CAR_RED, HIGH);
+    for(int i=0; i<20; ++i){
+      if(i%2){
+        digitalWrite(WALK_GREEN, HIGH);
+      } else {
+        digitalWrite(WALK_GREEN, LOW);
+      }
+      delay(1*1000);
+    }
+    //tirorno stato iniziale
+    reset();
+    digitalWrite(WALK_RED, HIGH);
+  	digitalWrite(CAR_GREEN, HIGH);
+    //cooldown semaforo
+    delay(10*1000);
+  }
+}

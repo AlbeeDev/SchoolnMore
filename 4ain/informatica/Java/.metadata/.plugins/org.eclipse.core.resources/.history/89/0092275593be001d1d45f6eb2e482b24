@@ -1,0 +1,26 @@
+import java.awt.Color;
+import javax.swing.JFrame;
+
+
+
+
+public class MyMain {
+	
+	public static void main(String[] args) {
+		
+		
+		JFrame frame = new JFrame();
+		frame.setSize(1000,900);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.DARK_GRAY);
+		frame.setLayout(null);
+		
+		GamePanel p = new GamePanel();
+		frame.getContentPane().add(p);
+
+		frame.setVisible(true);
+	}
+	
+	
+
+}

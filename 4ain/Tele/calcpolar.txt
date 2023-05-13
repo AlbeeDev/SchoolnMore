@@ -1,0 +1,25 @@
+Rc=370 ohm
+Rb=100k ohm
+Vbb=Vcc=9V
+
+Vbe=0,7V
+Vce=4,1V
+
+Vcc=Vrc-Vce
+Vrc=Vcc+Vce
+Vrc=9+4,1=13,1V
+
+Vbb=Vrb-Vbe
+Vrb=Vbb+Vbe
+Vrb=9+0,7=9,7V
+
+Ic=Vrc/Rc
+Ic=13,1/0,37=35,4mA 
+
+Ib=Vrb/Rb
+Ib=9,7/100=0,097mA
+
+Ib=Hfe/Ic
+Hfe=Ib*Ic
+Hfe=0,097*35,4=3,4
+

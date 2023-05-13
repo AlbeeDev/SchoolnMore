@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="bit_parita.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="65"/>
+        <CursorPos X="24" Y="85"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\proteina titina\proteina_titina.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8"/>
+        <CursorPos X="3" Y="22"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="13" HistoryIndex="12">
+      <Position1>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="25" Column="16" TopLine="5"/>
+      </Position1>
+      <Position2>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="22" Column="18" TopLine="6"/>
+      </Position2>
+      <Position3>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="12" Column="7" TopLine="6"/>
+      </Position3>
+      <Position4>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="32" Column="20" TopLine="14"/>
+      </Position4>
+      <Position5>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="26" Column="20" TopLine="13"/>
+      </Position5>
+      <Position6>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="36" Column="3" TopLine="19"/>
+      </Position6>
+      <Position7>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="60" Column="7" TopLine="37"/>
+      </Position7>
+      <Position8>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="14" Column="26"/>
+      </Position8>
+      <Position9>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="79" Column="32" TopLine="60"/>
+      </Position9>
+      <Position10>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="75" Column="91" TopLine="61"/>
+      </Position10>
+      <Position11>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="83" Column="19" TopLine="61"/>
+      </Position11>
+      <Position12>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="69" Column="21" TopLine="58"/>
+      </Position12>
+      <Position13>
+        <Filename Value="bit_parita.pas"/>
+        <Caret Line="73" Column="36" TopLine="65"/>
+      </Position13>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

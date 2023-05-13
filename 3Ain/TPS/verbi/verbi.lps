@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="verbi.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="87"/>
+        <CursorPos X="48" Y="105"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\inc\systemh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1145"/>
+        <CursorPos X="10" Y="1157"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="7" HistoryIndex="6">
+      <Position1>
+        <Filename Value="verbi.lpr"/>
+        <Caret Line="111" Column="20" TopLine="94"/>
+      </Position1>
+      <Position2>
+        <Filename Value="verbi.lpr"/>
+        <Caret Line="110" Column="26" TopLine="94"/>
+      </Position2>
+      <Position3>
+        <Filename Value="verbi.lpr"/>
+        <Caret Line="114" Column="6" TopLine="93"/>
+      </Position3>
+      <Position4>
+        <Filename Value="verbi.lpr"/>
+        <Caret Line="15" Column="46"/>
+      </Position4>
+      <Position5>
+        <Filename Value="verbi.lpr"/>
+        <Caret Line="19" Column="30" TopLine="7"/>
+      </Position5>
+      <Position6>
+        <Filename Value="verbi.lpr"/>
+        <Caret Line="25" Column="28" TopLine="7"/>
+      </Position6>
+      <Position7>
+        <Filename Value="verbi.lpr"/>
+        <Caret Line="19" Column="31" TopLine="7"/>
+      </Position7>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

@@ -1,0 +1,4 @@
+fra prima linea
+poi linea 2
+--LINEA TROPPO LUNGA--
+in fine linea 4

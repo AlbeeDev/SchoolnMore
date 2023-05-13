@@ -1,0 +1,14 @@
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class SettingsPanel extends JPanel{
+	
+	public SettingsPanel(JFrame frame) {
+		setBounds(0,0,frame.getContentPane().getWidth(),frame.getContentPane().getHeight());
+		setBackground(Color.red);
+	}
+
+}

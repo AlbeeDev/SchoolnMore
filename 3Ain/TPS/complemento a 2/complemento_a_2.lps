@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="complemento_a_2.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="30"/>
+        <CursorPos X="24" Y="49"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="5" HistoryIndex="4">
+      <Position1>
+        <Filename Value="complemento_a_2.lpr"/>
+        <Caret Line="42" Column="6" TopLine="16"/>
+      </Position1>
+      <Position2>
+        <Filename Value="complemento_a_2.lpr"/>
+        <Caret Line="14" Column="12" TopLine="2"/>
+      </Position2>
+      <Position3>
+        <Filename Value="complemento_a_2.lpr"/>
+        <Caret Line="23" Column="17" TopLine="6"/>
+      </Position3>
+      <Position4>
+        <Filename Value="complemento_a_2.lpr"/>
+        <Caret Line="40" Column="24" TopLine="24"/>
+      </Position4>
+      <Position5>
+        <Filename Value="complemento_a_2.lpr"/>
+        <Caret Line="43" Column="11" TopLine="32"/>
+      </Position5>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

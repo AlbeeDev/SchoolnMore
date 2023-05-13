@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\lazarus\fpc\3.2.0\bin\x86_64-win64\fpc.exe" Date="1381340986"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-FiC:\Users\alex\Documents\Scuola\3Ain\TPS\_file\bmp strisce\es 3\lib\x86_64-win64&quot; &quot;-FuC:\Users\alex\Documents\Scuola\3Ain\TPS\_file\bmp strisce\es 3\&quot; &quot;-FUC:\Users\alex\Documents\Scuola\3Ain\TPS\_file\bmp strisce\es 3\lib\x86_64-win64\&quot; &quot;-FEC:\Users\alex\Documents\Scuola\3Ain\TPS\_file\bmp strisce\es 3\&quot; &quot;-oC:\Users\alex\Documents\Scuola\3Ain\TPS\_file\bmp strisce\es 3\scacchiera.exe&quot; scacchiera.pas"/>
+</CONFIG>

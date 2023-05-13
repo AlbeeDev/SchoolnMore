@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="battaglianavale.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="412"/>
+        <CursorPos X="23" Y="429"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\..\gameoflife\gameoflife.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="6"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="3" HistoryIndex="2">
+      <Position1>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="437" Column="35" TopLine="420"/>
+      </Position1>
+      <Position2>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="398" Column="40" TopLine="385"/>
+      </Position2>
+      <Position3>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="413" Column="28" TopLine="401"/>
+      </Position3>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

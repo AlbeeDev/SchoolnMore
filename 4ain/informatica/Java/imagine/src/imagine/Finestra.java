@@ -1,0 +1,29 @@
+package imagine;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.io.IOException;
+
+import javax.swing.*;
+
+public class Finestra extends JFrame{
+	int w = 1000;
+	int h = 600;
+	public Finestra(String string) throws IOException {
+		super(string);
+		setSize(w, h);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(null);
+		int wp = w;
+		int hp = h;
+		MioPannello pan = new MioPannello(wp, hp);
+		//add(pan, BorderLayout.CENTER);
+		add(pan);
+		setVisible(true);
+		
+		JOptionPane.showMessageDialog(this, "freccia-gių, click del mouse, pulsante"); 
+	}
+}

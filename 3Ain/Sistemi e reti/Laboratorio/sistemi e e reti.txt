@@ -1,0 +1,22 @@
+Protocollo MA/VA
+requisiti:
+-ricevente
+-trasmentente 
+-messaggio /numeri/lettere
+-controllo
+-otto fili
+-switch LETTERE /NUM 
+-2 led  per cambiare da numeri a lettere
+-2 led luci per distinguere tra numeri e caratteri
+-2 led per controllare se dall'altra parte se c'è il ricevente
+Regole:
+
+1)- invio
+2)controlllo
+3)trasmissione
+4)controllo
+5)esecuzione 
+-il trasmittente deve controllare se il mesaggio arrivato
+-il led si accende se il messaggio è andato a buon fine
+-utente SCRIVE msg CONTROLLO,TRASMISSIONE ,CONTROLLO ,RICEVENTE CONTROLLO CHE IL MESAGGIO è STATO LETTO, 
+RIMANDO IL CONTROLLO AL TRASMITENTE PER INFORMALRLO CHE IL MESAGGIO E ANDATO A BUON FINE

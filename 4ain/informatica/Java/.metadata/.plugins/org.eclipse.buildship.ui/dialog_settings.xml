@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.buildship.ui.wizard.project.creation">
+		<item key="use_default_location" value="false"/>
+	</section>
+	<section name="org.eclipse.buildship.ui.wizard.project.import">
+		<item key="project_location" value="C:\Users\alexT\Documents\java stuff\minecraft mods etc\1.12.2 mdk"/>
+	</section>
+</section>

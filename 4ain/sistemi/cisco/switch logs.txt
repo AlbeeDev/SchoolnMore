@@ -1,0 +1,21 @@
+switch>enable
+switch#clock set 18:34:00 OCT 27 2022
+switch#conf t
+switch(config)#hostname SW1
+SW1(config)#line console 0
+SW1(config-line)#password cisco
+SW1(config-line)#login
+SW1(config-line)#exit
+SW1(config)#line vty 0 15
+SW1(config-line)#password cisco
+SW1(config-line)#login
+SW1(config-line)#exit
+SW1(config)#interface vlan 1
+SW1(config-if)#ip adress 192.136.17.81 255.255.255.0
+SW1(config-if)#no shut
+SW1(config-if)#exit
+SW1(config)#service password-en
+SW1(config)#end
+SW1#copy run start
+SW1#disable
+SW1>logout

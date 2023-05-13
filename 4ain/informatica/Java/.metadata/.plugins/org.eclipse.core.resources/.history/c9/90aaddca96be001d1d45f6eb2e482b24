@@ -1,0 +1,27 @@
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class MainPanel extends JPanel{
+	
+	public MainPanel(JFrame frame) {
+		setBounds(0,0,frame.getContentPane().getWidth(),frame.getContentPane().getHeight());
+		setBackground(Color.pink);
+		setLayout(null);
+		
+		JButton play= new JButton();
+		play.setBounds(150,100,200,200);
+		play.setBackground(Color.green);
+		play.setText("PLAY");
+		add(play);
+		
+		JButton settings = new JButton();
+		settings.setBackground(Color.LIGHT_GRAY);
+		settings.setText("SETTINGS");
+		add(settings);
+	}
+
+}

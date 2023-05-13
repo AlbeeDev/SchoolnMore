@@ -1,0 +1,10 @@
+salerno     34
+juve        31
+torino      30
+napoli      26
+milan       23
+inter       18
+bologna     13
+cagliari    12
+ravenna     10
+atalanta     9

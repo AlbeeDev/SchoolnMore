@@ -1,0 +1,28 @@
+{
+    "version":"1.1",
+    "userdata":{
+        "username":"user",
+        "selecteddifficulty":"medium",
+        "difficulty":{
+            "easy":{
+                "win":0,
+                "lost":0,
+                "attempts":10
+            },
+            "medium":{
+                "win":0,
+                "lost":0,
+                "attempts":5
+            },
+            "hard":{
+                "win":0,
+                "lost":0,
+                "attempts":3
+            }
+        }
+    },
+    "aspect":{
+        "fullscreen": true,
+        "bgcolor":[255,255,255]
+    }
+}

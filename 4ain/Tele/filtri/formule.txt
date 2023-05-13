@@ -1,0 +1,15 @@
+calcolo |Z|
+|Z|=radice2(R^2 * Xc^2)
+Xc=1/wC 
+w=2*pi*f
+Xc=1/(2*pi*f*C)  '
+
+|Z|=radice2(R^2 * (1/(2*pi*f*C))^2)
+'in tabella viene usata 1/2pC costante con f variabile nella colonna Xc
+
+calcolo |H| e |H|db
+|H|=1/radice2(1+(w^2 * t^2))
+
+|H|db= 20*log10( |H| )
+
+(grafico in excell)

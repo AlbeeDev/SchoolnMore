@@ -1,0 +1,2 @@
+Valore minimo: 2
+Valore massimo: 1234

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;worldmap&apos; to &apos;pallina&apos;&#x0D;&#x0A;- Original project: &apos;pallina&apos;&#x0D;&#x0A;- Original element: &apos;pallina/src/worldmap&apos;&#x0D;&#x0A;- Renamed element: &apos;pallina/src/pallina&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;worldmap&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;worldmap" name="pallina" qualified="false" references="true" stamp="1671897471997" textual="false" version="1.0"/>
+</session>

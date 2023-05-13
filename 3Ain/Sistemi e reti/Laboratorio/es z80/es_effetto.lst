@@ -1,0 +1,26 @@
+---------------------------------------------
+Z80 ASSEMBLER LISTING
+Line   Addr Opcode      Label   Instruction
+---------------------------------------------
+0001   0000             ;albano alex 3ain
+0002   0000             	org 0h
+0003   0000 C3 00 01    	jp main
+0004   0003             	org 100h
+0005   0100 0E 01       main	ld C,01h
+0006   0102 16 01       	ld D,01h
+0007   0104 ED 51       rp	out (C),D
+0008   0106             
+0009   0106 72          loop	ld (HL),D
+0010   0107 34          	inc (HL)
+0011   0108 35          	dec (HL)
+0012   0109 CA 16 01    	jp z,reset
+0013   010C 14          lp	inc D
+0014   010D 35          	dec (HL)
+0015   010E C2 0C 01    	jp nz,lp
+0016   0111 ED 51       	out (C),D
+0017   0113 CA 06 01    	jp z,loop
+0018   0116             
+0019   0116 16 01       reset	ld D,1h
+0020   0118 C3 04 01    	jp rp
+0021   011B 76          	halt
+Number of errors = 0

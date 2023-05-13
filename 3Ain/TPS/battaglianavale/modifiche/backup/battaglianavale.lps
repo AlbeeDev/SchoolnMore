@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="battaglianavale.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="354"/>
+        <CursorPos X="41" Y="387"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\gameoflife\gameoflife.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="6"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="20" HistoryIndex="19">
+      <Position1>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="190" Column="18" TopLine="179"/>
+      </Position1>
+      <Position2>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="44" Column="11" TopLine="33"/>
+      </Position2>
+      <Position3>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="199" Column="29" TopLine="180"/>
+      </Position3>
+      <Position4>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="44" Column="11" TopLine="33"/>
+      </Position4>
+      <Position5>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="46" Column="59" TopLine="36"/>
+      </Position5>
+      <Position6>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="42" Column="35" TopLine="36"/>
+      </Position6>
+      <Position7>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="46" Column="59" TopLine="36"/>
+      </Position7>
+      <Position8>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="60" Column="41" TopLine="45"/>
+      </Position8>
+      <Position9>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="56" Column="11" TopLine="45"/>
+      </Position9>
+      <Position10>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="76" Column="8" TopLine="64"/>
+      </Position10>
+      <Position11>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="99" Column="11" TopLine="88"/>
+      </Position11>
+      <Position12>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="103" Column="11" TopLine="94"/>
+      </Position12>
+      <Position13>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="111" Column="11" TopLine="100"/>
+      </Position13>
+      <Position14>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="115" Column="18" TopLine="103"/>
+      </Position14>
+      <Position15>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="155" Column="11" TopLine="144"/>
+      </Position15>
+      <Position16>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="159" Column="22" TopLine="156"/>
+      </Position16>
+      <Position17>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="167" Column="11" TopLine="156"/>
+      </Position17>
+      <Position18>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="171" Column="26" TopLine="159"/>
+      </Position18>
+      <Position19>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="191" Column="19" TopLine="179"/>
+      </Position19>
+      <Position20>
+        <Filename Value="battaglianavale.pas"/>
+        <Caret Line="197" Column="11" TopLine="180"/>
+      </Position20>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

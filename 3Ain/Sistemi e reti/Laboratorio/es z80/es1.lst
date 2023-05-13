@@ -1,0 +1,16 @@
+---------------------------------------------
+Z80 ASSEMBLER LISTING
+Line   Addr Opcode      Label   Instruction
+---------------------------------------------
+0001   0000             	org 0h
+0002   0000 C3 00 01    	jp main
+0003   0003             	org 100h
+0004   0100 3E FF       main	ld a,ffh
+0005   0102 21 00 03    	ld hl,0300h
+0006   0105 77          ciclo	ld (hl),a
+0007   0106 3D          	dec a
+0008   0107 23          	inc hl
+0009   0108 FE 00       	cp 0h
+0010   010A C2 05 01    	jp nz,ciclo
+0011   010D 76          	halt
+Number of errors = 0

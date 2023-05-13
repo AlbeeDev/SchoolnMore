@@ -1,0 +1,54 @@
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class MainPanel extends JPanel{
+	
+	public MainPanel(JFrame frame) {
+		setBounds(0,0,frame.getContentPane().getWidth(),frame.getContentPane().getHeight());
+		setBackground(Color.darkGray);
+		setLayout(null);
+		
+		JButton play= new JButton();
+		play.setBounds(350,300,300,100);
+		play.setBackground(Color.green);
+		play.setText("PLAY");
+		add(play);
+		
+		ActionListener playevent = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				GamePanel gamep = new GamePanel(frame);
+				frame.add(gamep);
+			}
+		};
+		
+		play.addActionListener(playevent);
+		
+		JButton settings = new JButton();
+		settings.setBounds(350,450,300,100);
+		settings.setBackground(Color.LIGHT_GRAY);
+		settings.setText("SETTINGS");
+		add(settings);
+		
+		ActionListener settingsevent = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				GamePanel setp = new GamePanel(frame);
+				frame.add(setp);
+			}
+		};
+		
+		play.addActionListener(settingsevent);
+	}
+
+}

@@ -1,0 +1,14 @@
+R1 = 1 kOhm
+R2 = 3 kOhm
+R3 = 200 Ohm
+R4 = 600 Ohm
+Vg1 = 6V
+Vg2 = 12V
+
+I1 e I2?
+
+I1 = Vg1/R1
+I1 = 6/1 = 6 mA
+
+I2 = Vg2/R2
+I2 = 12/3 = 4 mA

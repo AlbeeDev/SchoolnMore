@@ -1,0 +1,18 @@
+---------------------------------------------
+Z80 ASSEMBLER LISTING
+Line   Addr Opcode      Label   Instruction
+---------------------------------------------
+0001   0000             ;ancarani giacomo
+0002   0000             ;Realizzare un programma Z80 che riempie con il valore FFh le celle di memoria a partire da 200h fino ad arrivare alla cella contenete 11h
+0003   0000             
+0004   0000             	org 0h
+0005   0000 C3 03 00    	jp main
+0006   0003 21 00 02    main 	ld hl, 200h
+0007   0006 36 FF       ciclo   ld (hl),ffh
+0008   0008 7E          	ld a,(hl)
+0009   0009 23          	inc hl
+0010   000A 7E          	ld a,(hl)
+0011   000B FE 11       	cp 11h
+0012   000D C2 06 00    	jp nz,ciclo
+0013   0010 76          	halt
+Number of errors = 0

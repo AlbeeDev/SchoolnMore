@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\lazarus\fpc\3.2.0\bin\x86_64-win64\fpc.exe" Date="1381340986"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-FiC:\Users\alex\Documents\Scuola\3Ain\TPS\parole frase\lib\x86_64-win64&quot; &quot;-FuC:\Users\alex\Documents\Scuola\3Ain\TPS\parole frase\&quot; &quot;-FUC:\Users\alex\Documents\Scuola\3Ain\TPS\parole frase\lib\x86_64-win64\&quot; &quot;-FEC:\Users\alex\Documents\Scuola\3Ain\TPS\parole frase\&quot; &quot;-oC:\Users\alex\Documents\Scuola\3Ain\TPS\parole frase\parole_frase.exe&quot; parole_frase.lpr"/>
+</CONFIG>

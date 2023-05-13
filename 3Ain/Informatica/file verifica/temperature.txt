@@ -1,0 +1,8 @@
+Piacenza  27.0C
+Parma    103.0F
+Modena    26.0C
+Bologna   81.0F
+Ferrara   83.0F
+Ravenna   24.0C
+Forli     -8.0F
+Rimini    13.0F

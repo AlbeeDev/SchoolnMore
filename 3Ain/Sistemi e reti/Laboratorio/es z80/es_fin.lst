@@ -1,0 +1,34 @@
+---------------------------------------------
+Z80 ASSEMBLER LISTING
+Line   Addr Opcode      Label   Instruction
+---------------------------------------------
+0001   0000             	org 0h
+0002   0000 C3 00 01    	jp main
+0003   0003             	org 100h
+0004   0100 21 00 02    main 	ld HL, 200h
+0005   0103 31 FF FF    	ld SP, ffffh
+0006   0106 06 0F       	ld B, fh
+0007   0108 CD 10 01    	call min
+0008   010B 31 02 03    	ld sp, 302h
+0009   010E D5          	push DE ;ld (300h), DE
+0010   010F 76          	halt
+0011   0110             
+0012   0110 C5          min 	push BC
+0013   0111 E5          	push HL
+0014   0112 7E          	ld A, (HL)
+0015   0113 E5          	push HL ; ld DE, HL
+0016   0114 D1          	pop DE
+0017   0115 05          loop 	dec B
+0018   0116 28 0A       	jr z, endFun
+0019   0118 23          	inc HL
+0020   0119 4E          	ld C, (HL)
+0021   011A B9          	cp C
+0022   011B 38 03       	jr c, else ; http://jgmalcolm.com/z80/beginner/flag
+0023   011D 79          	ld A, C
+0024   011E E5          	push HL ; ld DE, HL
+0025   011F D1          	pop DE
+0026   0120 18 F3       else 	jr loop
+0027   0122 E1          endFun 	pop HL
+0028   0123 C1          	pop BC
+0029   0124 C9          	ret
+Number of errors = 0

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="parole_frase.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="9"/>
+        <CursorPos X="18" Y="31"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="8" HistoryIndex="7">
+      <Position1>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="19" Column="28" TopLine="9"/>
+      </Position1>
+      <Position2>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="12" Column="6"/>
+      </Position2>
+      <Position3>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="14" Column="10" TopLine="2"/>
+      </Position3>
+      <Position4>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="23" Column="8" TopLine="8"/>
+      </Position4>
+      <Position5>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="29" Column="14" TopLine="6"/>
+      </Position5>
+      <Position6>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="18" Column="15" TopLine="7"/>
+      </Position6>
+      <Position7>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="20" Column="27" TopLine="9"/>
+      </Position7>
+      <Position8>
+        <Filename Value="parole_frase.lpr"/>
+        <Caret Line="28" Column="23" TopLine="9"/>
+      </Position8>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
