@@ -1,0 +1,13 @@
+INSERT INTO Users (UserID, UserName, Email, DateOfBirth) VALUES (1, 'JohnDoe', 'johndoe@example.com', '1985-04-12');
+
+SELECT * FROM Users;
+
+SELECT UserName, Email FROM Users;
+
+SELECT COUNT(*), DateOfBirth FROM Users GROUP BY DateOfBirth;
+
+SELECT * FROM Users ORDER BY UserName ASC;
+
+SELECT * FROM Users WHERE Email LIKE '%example.com';
+
+SELECT * FROM Users LIMIT 10;

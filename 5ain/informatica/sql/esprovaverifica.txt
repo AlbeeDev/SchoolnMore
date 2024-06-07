@@ -1,0 +1,201 @@
+create database esprovaverifica;
+
+use esprovaverifica;
+
+create table tUtenti(
+    IDutente int primary key auto_increment,
+    cognomeUtente varchar(255),
+    nomeUtente varchar(255),
+    mailUtente varchar(255),
+    CF varchar(255)
+);
+
+create table tDestinazioni(
+    IDdestinazione int primary key auto_increment,
+    nomeDestinazione varchar(255),
+    nazioneDestinazione varchar(255)
+);
+
+INSERT INTO tUtenti (cognomeUtente, nomeUtente, mailUtente, CF)
+VALUES
+  ('Rossi', 'Mario', 'mario.rossi@email.com', 'RSSMRA01M01H501A'),
+  ('Bianchi', 'Anna', 'anna.bianchi@email.com', 'BNCHAN02M02H502B'),
+  ('Verdi', 'Luigi', 'luigi.verdi@email.com', 'VRDLUI03M03H503C');
+
+-- Inserimento dati per la tabella tDestinazioni
+INSERT INTO tDestinazioni (nomeDestinazione, nazioneDestinazione)
+VALUES
+  ('Roma', 'Italia'),
+  ('Parigi', 'Francia'),
+  ('Londra', 'Regno Unito');
+
+create table tViaggi(
+    IDviaggio int primary key auto_increment,
+    dataInizio date not null,
+    durataGiorni int default 1,
+    costoViaggio decimal not null,
+    kdestinazione int,
+    foreign key (kdestinazione) references tDestinazioni(IDdestinazione)
+);
+
+create table rPartecipaViaggio(
+    IDpartecipaViaggio int primary key auto_increment,
+    kutente int,
+    kdestinazione int,
+    pesoValigie int,
+    constraint checkpeso check ( pesoValigie<40 ),
+    foreign key (kutente) references tUtenti(IDutente),
+    foreign key (kdestinazione) references tDestinazioni(IDdestinazione)
+);
+
+alter table rPartecipaViaggio
+ADD nValigie int;
+
+INSERT INTO tViaggi (dataInizio, durataGiorni, costoViaggio, kdestinazione)
+VALUES
+  ('2024-05-10', 7, 1500.00, 1),
+  ('2024-07-15', 5, 1200.00, 2),
+  ('2024-09-01', 10, 2500.00, 3);
+
+-- Inserimento dati per la tabella rPartecipaViaggio
+INSERT INTO rPartecipaViaggio (kutente, kdestinazione, pesoValigie, nValigie)
+VALUES
+  (1, 1, 15, 2),
+  (2, 2, 20, 1),
+  (3, 3, 30, 3);
+
+select cognomeUtente from tUtenti
+where SUBSTR(cognomeUtente,1,1) = 'r'
+order by cognomeUtente;
+
+select * from tviaggi
+where dataInizio>curdate();
+
+delimiter $$
+
+create function getutenteid(nome varchar(255), cognome varchar(255))
+    returns int
+begin
+    return (select IDutente from tUtenti
+    where nomeUtente=nome and cognomeUtente=cognome);
+end;
+$$
+
+delimiter ;
+
+delimiter $$
+
+create procedure showUserDestination(nome varchar(255), cognome varchar(255))
+begin
+    select nomeDestinazione, nazioneDestinazione from rpartecipaviaggio
+    join tDestinazioni tD on tD.IDdestinazione = rPartecipaViaggio.kdestinazione
+    where kutente=getutenteid(nome, cognome);
+end;
+$$
+
+delimiter ;
+
+call showUserDestination('star','lemmers');
+
+select nomeDestinazione, count(kdestinazione) as nviaggi from tviaggi
+join tDestinazioni tD on tD.IDdestinazione = tViaggi.kdestinazione
+group by nomeDestinazione;
+
+select nomeUtente,count(IDutente) as nviaggi from rpartecipaviaggio
+join tUtenti tU on rPartecipaViaggio.kutente = tU.IDutente
+group by nomeUtente
+having count(IDutente)>=3
+order by nomeUtente;
+
+delimiter $$
+
+create procedure showDestSpecsByData(data date)
+begin
+    select count(nValigie) as nvaligie, nomeDestinazione from rpartecipaviaggio
+    join tDestinazioni tD on tD.IDdestinazione = rPartecipaViaggio.kdestinazione
+    join tViaggi tV on tD.IDdestinazione = tV.kdestinazione
+    where dataInizio=data
+    group by nomeDestinazione;
+end;
+$$
+
+delimiter ;
+
+call showDestSpecsByData(curdate());
+
+select nomeDestinazione ,sum(pesoValigie) as totalepesovaligie, count(IDviaggio) as nviaggi from rpartecipaviaggio
+join tviaggi t on rPartecipaViaggio.kdestinazione = t.kdestinazione
+join tDestinazioni tD on tD.IDdestinazione = rPartecipaViaggio.kdestinazione
+group by nomeDestinazione;
+
+delimiter $$
+
+create procedure showMultipleUserDestination(nome1 varchar(255), cognome1 varchar(255), nome2 varchar(255), cognome2 varchar(255))
+begin
+    select nomeDestinazione, nazioneDestinazione from rpartecipaviaggio r1
+    join rpartecipaviaggio r2 on r1.kdestinazione = r2.kdestinazione
+    AND r1.kutente = getutenteid(nome1, cognome1)
+    AND r2.kutente = getutenteid(nome2, cognome2)
+    join tDestinazioni tD on tD.IDdestinazione = r1.kdestinazione;
+end;
+$$
+
+delimiter ;
+
+call showMultipleUserDestination2('Ailee','Clemence','Nathalie','Ianiello');
+
+update tviaggi
+set
+    costoViaggio = costoViaggio*1.25
+where kdestinazione in (
+    select IDdestinazione
+    from tDestinazioni
+    where nazioneDestinazione = 'japan'
+);
+
+create view viewViaggio as
+select nomeDestinazione, costoViaggio, dataInizio from tviaggi
+join tDestinazioni tD on tD.IDdestinazione = tViaggi.kdestinazione
+order by dataInizio;
+
+select avg(costoViaggio) from tviaggi;
+
+select nomeDestinazione, costoViaggio from tviaggi
+join tDestinazioni tD on tD.IDdestinazione = tViaggi.kdestinazione
+where costoViaggio< (select avg(costoViaggio) from tviaggi)
+group by nomeDestinazione;
+
+create table tpunti(
+    IDpunti int primary key auto_increment,
+    kutente int,
+    punti int,
+    dataPunti date,
+    foreign key (kutente) references tutenti(IDutente)
+);
+
+delimiter $$
+
+create trigger checkuserinsert
+after insert on rpartecipaviaggio
+for each row
+begin
+    call addpoints(NEW.kutente);
+end;
+$$
+
+delimiter ;
+
+delimiter $$
+
+create procedure addpoints(utente int)
+begin
+    insert into tpunti(kutente, punti, dataPunti)
+    values
+    (utente, 10, curdate())
+    on duplicate key update
+    punti = punti+10,
+    dataPunti = curdate();
+end;
+$$
+
+delimiter ;

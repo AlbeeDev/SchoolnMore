@@ -1,0 +1,26 @@
+.cards-container {
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow cards to wrap to next line */
+    justify-content: center; /* Center cards in the container */
+    gap: 10px; /* Space between cards */
+    padding: 20px; /* Padding around the entire grid of cards */
+}
+
+.card-button {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-flex; /* Align content in the center */
+    justify-content: center;
+    align-items: center;
+    width: 120px; /* Set a fixed width for consistency */
+    height: 180px; /* Set a fixed height for consistency */
+    overflow: hidden; /* Prevents content from overflowing */
+}
+
+.card-button img {
+    width: 100%; /* Ensure image covers button area */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+}

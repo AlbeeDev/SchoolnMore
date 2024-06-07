@@ -1,0 +1,24 @@
+{
+    "user": [
+      {
+        "username": "user1",
+        "name": "John Doe"
+      },
+      {
+        "username": "user2",
+        "name": "Jane Smith"
+      },
+      {
+        "username": "user3",
+        "name": "Alice Johnson"
+      },
+      {
+        "username": "user4",
+        "name": "Bob Brown"
+      },
+      {
+        "username": "user5",
+        "name": "Emily Davis"
+      }
+    ]
+  }

@@ -1,0 +1,30 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* ensures the list is in line */
+    background-color: #333; /* dark background for the navbar */
+  }
+  
+  li {
+    float: left; /* makes list items sit side by side */
+  }
+  
+  li a {
+    display: block;
+    color: white; /* text color */
+    text-align: center;
+    padding: 14px 16px; /* size of the buttons */
+    text-decoration: none;
+    transition: 0.3s; /* smooth color transition */
+  }
+  
+  /* change background color of links on hover */
+  li a:hover {
+    background-color: #111;
+  }
+  
+  /* optional: rounded corners for buttons */
+  li a {
+    border-radius: 5px;
+  }

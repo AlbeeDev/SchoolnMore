@@ -1,0 +1,227 @@
+create database recapdb;
+
+use recapdb;
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100) UNIQUE,
+    Password VARCHAR(100),
+    City VARCHAR(50),
+    Country VARCHAR(50),
+    JoinDate date
+);
+
+-- Products Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    Price DECIMAL(10, 2),
+    CategoryID INT,
+    CreationDate date,
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+
+-- Categories Table
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100)
+);
+
+-- Orders Table
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    ProductID INT,
+    Quantity INT,
+    CreationDate date,
+    Status VARCHAR(50),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    foreign key (ProductID) references products(ProductID)
+);
+
+-- Reviews Table
+CREATE TABLE Reviews (
+    ReviewID INT PRIMARY KEY AUTO_INCREMENT,
+    ProductID INT,
+    UserID INT,
+    Rating INT CHECK (Rating >= 1 AND Rating <= 5),
+    CreationDate date,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+alter table users
+add City VARCHAR(50), add Country VARCHAR(50);
+
+#Insert Data
+insert into users(FirstName, LastName, Email, Password, City, Country, JoinDate)
+values ('Yule','Barwell','ybarwell0@hexun.com','pT0&_5y!4','San Jose','Mexico',2024-10-11),
+       ('Shirlene','Rosbotham','srosbotham1@noaa.gov','bU6##oV$QP','San Diego','United States',2024-07-26);
+
+#Change the price of a product in the Products table
+update products
+set Price=25
+where Name='puzzles';
+
+#Update a user's email address in the Users table
+update users
+set Email='firstuser@premium.com'
+where UserID=1;
+
+#Remove a user from the Users table by their UserID
+delete from users
+where UserID=1;
+
+#Delete a product from the Products table that has never been ordered.
+delete from products
+where not ProductID in (
+select ProductID from orders
+);
+
+#Retrieve all products with a price greater than a certain value
+select * from products
+where Price>2500
+order by Price asc;
+
+#Select all users from a specific city
+select * from users
+where City='Norberg'
+order by LastName;
+
+#Write a query to list all orders along with the user's first and last name
+select OrderID, ProductID, Quantity, CreationDate, Status, FirstName, LastName from orders
+join Users U on U.UserID = Orders.UserID
+order by OrderID;
+
+#Find all products in a specific category by joining Products and Categories tables
+select p.ProductID,p.Name, C.name from products p
+join Categories C on C.CategoryID = p.CategoryID
+where C.Name='electronics'
+order by ProductID;
+
+#Retrieve the order details including product names and category names for a specific order
+select * from orders o
+join products p on o.ProductID = p.ProductID
+join Categories C on C.CategoryID = p.CategoryID;
+
+#List all reviews with the product name and user's full name.
+select r.ReviewID, p.Name, U.FirstName, U.LastName from reviews r
+join Products P on P.ProductID = r.ProductID
+join Users U on U.UserID = r.UserID
+order by ReviewID;
+
+#Calculate the total number of products in each category
+select C.Name,count(ProductID) as count from products p
+join Categories C on C.CategoryID = p.CategoryID
+group by C.Name
+order by count;
+
+#Find the average rating for each product in the Reviews table
+select p.Name,avg(Rating) as avgrating from reviews r
+join Products P on P.ProductID = r.ProductID
+group by Name
+order by avgrating desc;
+
+#Select categories that have more than 10 products
+select c.Name, count(ProductID) as count from categories c
+join Products P on c.CategoryID = P.CategoryID
+group by c.Name
+having count>10
+order by count;
+
+#List products that have an average rating lower than 3
+select p.Name,avg(Rating) as avgrating from reviews r
+join Products P on P.ProductID = r.ProductID
+group by Name
+having avgrating<3
+order by avgrating asc;
+
+#Select the names of users who have placed more than 5 orders
+select FirstName, LastName, count(OrderID) as ordercount from users u
+join Orders O on u.UserID = O.UserID
+group by O.UserID
+having ordercount>5;
+
+#Find the top 3 most expensive products that have been ordered
+select OrderID, Name, p.Price from orders
+join products p on Orders.ProductID = p.ProductID
+order by Price desc
+limit 3;
+
+#(not an exercise) support function for the insert procedure
+delimiter $$
+
+create function getIDfromcategoryname(category varchar(255))
+returns int
+begin
+    return(
+        select CategoryID from categories
+        where Name=category
+        );
+end;
+$$
+
+delimiter ;
+
+#Create a stored procedure to insert a new product and return the new ProductID.
+delimiter $$
+
+create procedure insertProduct(namen varchar(255), pricen decimal, categoryName varchar(255))
+begin
+    insert into products(Name, Price, CategoryID, CreationDate)
+    values(namen, pricen, getIDfromcategoryname(categoryName), curdate());
+
+    select ProductID from products
+    where Name=namen;
+end;
+$$
+
+delimiter ;
+
+call insertProduct('customproduct', 100, 'electronics');
+
+#Write a function to calculate the total price for an order based on OrderID
+delimiter $$
+
+create function calculateprice(orderIdn int)
+returns decimal
+begin
+    return (select price * Quantity from orders
+            join products p on Orders.ProductID = p.ProductID
+            where OrderID = orderIdn);
+end;
+$$
+
+delimiter ;
+
+select calculateprice(1);
+
+#Create a function that returns the full name of a user given their UserID.
+delimiter $$
+
+create function getuserbyID(useridn int)
+returns varchar(255)
+begin
+    return (select LastName from users
+            where UserID=UserIDn);
+end;
+$$
+
+delimiter ;
+
+select getuserbyID(1);
+
+#Define a trigger that automatically updates the JoinDate in the Users table to the current date when a new user is inserted
+delimiter $$
+
+create trigger updatedateonuserinsert
+after insert on users
+for each row
+begin
+    #just defining the structure cuz the procedure is not usable in the database
+end;
+$$
+
+delimiter ;

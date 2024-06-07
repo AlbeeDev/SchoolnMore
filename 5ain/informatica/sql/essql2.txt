@@ -1,0 +1,74 @@
+albano alex 5ain
+
+es1
+select SUM(crediti) from corsi;
+
+es2
+SELECT corso_id, COUNT(student_id) AS NumeroStudenti
+FROM iscrizioni
+GROUP BY corso_id;
+
+es3
+SELECT corso_id, avg(voto) AS MediaVoti
+FROM iscrizioni
+GROUP BY corso_id;
+
+es4
+select anno_di_nascita, count(student_id) as numerostudenti
+from studenti
+group by anno_di_nascita;
+
+es5
+SELECT corso_id as corso_con_avg_maggiore
+FROM (
+    #usando la select del es3 come table
+    SELECT corso_id, AVG(voto) AS MediaVoti
+    FROM iscrizioni
+    GROUP BY corso_id
+) as temp #il nome della nuova table non ha significato in questo contesto
+#ordinandoli come classifica per prendere il primo
+ORDER BY MediaVoti DESC
+LIMIT 1;
+
+es6
+select nome,cognome, avg(voto) as mediastudente
+from iscrizioni
+join studenti on studenti.student_id = iscrizioni.student_id
+group by studenti.student_id
+having mediastudente > (select avg(voto) from iscrizioni);
+
+es7
+SELECT nome_corso, COUNT(student_id) AS NumeroStudenti
+FROM iscrizioni
+join corsi on corsi.corso_id = iscrizioni.corso_id
+GROUP BY nome_corso
+order by NumeroStudenti desc
+limit 1;
+
+es8
+SELECT nome_corso, COUNT(student_id) AS NumeroStudentiSopraMedia
+FROM  iscrizioni
+join corsi on corsi.corso_id = iscrizioni.corso_id
+WHERE voto > (
+        SELECT AVG(voto)
+        FROM iscrizioni AS sub
+        WHERE sub.corso_id = iscrizioni.corso_id
+    )
+GROUP BY nome_corso;
+
+es9
+select nome_corso, nome, cognome , voto from iscrizioni
+join studenti s on iscrizioni.student_id = s.student_id
+join corsi c on c.corso_id = iscrizioni.corso_id
+WHERE voto = (
+        SELECT MAX(voto)
+        FROM iscrizioni AS sub
+        WHERE sub.corso_id = iscrizioni.corso_id
+    )
+group by nome_corso;
+
+es10
+select nome_corso, min(voto) from iscrizioni
+join corsi c on c.corso_id = iscrizioni.corso_id
+group by nome_corso
+having min(voto) > 18;

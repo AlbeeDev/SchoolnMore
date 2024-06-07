@@ -1,0 +1,24 @@
+/*Albano alex 5ain*/
+body{
+    background-color: black;
+    color: white;
+}
+
+div{
+    background-color: white;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+ }
+
+.lista{
+    color: aqua;
+}
+
+#titolo{
+    color: yellow;
+}
+

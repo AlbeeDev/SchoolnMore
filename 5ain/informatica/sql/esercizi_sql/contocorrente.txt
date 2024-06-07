@@ -1,0 +1,166 @@
+create database conto_corrente;
+
+use conto_corrente;
+
+create table banca(
+    id int primary key auto_increment,
+    ragione_sociale varchar(100),
+    indirizzo varchar(255),
+    citta varchar(50)
+);
+
+create table cliente(
+    id int primary key auto_increment,
+    nome varchar(50),
+    cognome varchar(50),
+    indirizzo varchar(255),
+    citta varchar(50),
+    telefono varchar(20),
+    numero_conto varchar(20),
+    id_banca int,
+    foreign key (id_banca) references banca(id)
+);
+
+create table movimenti(
+    id int primary key auto_increment,
+    id_cliente int,
+    id_destinatario int,
+    valuta decimal(10, 2),
+    causale varchar(50),
+    giorno date,
+    foreign key (id_cliente) references cliente(id),
+    foreign key (id_destinatario) references cliente(id)
+);
+
+insert into banca (ragione_sociale, indirizzo, citta)
+values ('banca milano', 'via montenapoleone 10', 'milano'),
+       ('banca roma', 'via del corso 100', 'roma');
+
+select * from banca;
+
+insert into cliente (nome, cognome, indirizzo, citta, telefono, numero_conto, id_banca)
+values ('mario', 'rossi', 'via toledo 50', 'napoli', '1234567890', '162', 1),
+       ('luca', 'bianchi', 'via po 12', 'torino', '0987654321', '826', 2);
+
+select * from cliente;
+
+delimiter $$
+
+create procedure deposito(destinatario int, quantita decimal(10,2))
+begin
+    insert into movimenti(id_cliente, id_destinatario, valuta, causale, giorno)
+    values
+    (null, destinatario, quantita, 'deposito', curdate());
+end$$
+
+delimiter ;
+
+delimiter $$
+
+create procedure prelievo(cliente int, quantita decimal(10,2))
+begin
+    insert into movimenti(id_cliente, id_destinatario, valuta, causale, giorno)
+    values
+    (cliente, null, quantita, 'prelievo', curdate());
+end$$
+
+delimiter ;
+
+delimiter $$
+
+create procedure bonifico(cliente int, destinatario int, quantita decimal(10,2))
+begin
+    insert into movimenti(id_cliente, id_destinatario, valuta, causale, giorno)
+    values
+	(cliente, destinatario, quantita, 'bonifico', curdate());
+end $$
+
+delimiter ;
+
+call deposito(1, 100);
+call deposito(2,100);
+
+select * from movimenti;
+
+delimiter $$
+
+create procedure get_pagamenti_fatti(cliente int)
+begin
+    select valuta, c.nome, c.cognome from movimenti
+    join cliente c on movimenti.id_destinatario = c.id
+    where id_cliente = cliente;
+end$$
+
+delimiter ;
+
+delimiter $$
+
+create procedure get_pagamenti_ricevuti(cliente int)
+begin
+    select valuta, c.nome, c.cognome from movimenti
+    join cliente c on movimenti.id_cliente = c.id
+    where id_destinatario = cliente;
+end$$
+
+delimiter ;
+
+delimiter $$
+
+create function get_saldo(cliente int)
+    returns decimal(10,2)
+begin
+    declare soldi_ricevuti decimal(10,2);
+    declare soldi_dati decimal(10,2);
+    declare saldo decimal(10,2);
+
+    -- calcola i soldi ricevuti
+    select sum(valuta) into soldi_ricevuti from movimenti where id_destinatario = cliente;
+
+    -- calcola i soldi dati
+    select sum(valuta) into soldi_dati from movimenti where id_cliente = cliente;
+
+    -- calcola il saldo (ifnull failsafe in caso la select sia nulla)
+    set saldo = ifnull(soldi_ricevuti, 0) - ifnull(soldi_dati, 0);
+    return saldo;
+end$$
+
+delimiter ;
+
+delimiter $$
+
+create function get_Cliente_By_Id(nomen varchar(255), cognomen varchar(255))
+    returns decimal(10,2)
+begin
+    return (select id from cliente
+	where nomen=nome and cognomen=cognome);
+end$$
+
+delimiter ;
+
+select get_saldo(1) as saldo;
+select get_saldo(get_Cliente_By_Id('mario','rossi')) as saldo;
+
+delimiter $$
+
+create trigger verifica_prelievo
+before insert on movimenti
+for each row
+    if (new.causale = 'prelievo') or (new.causale = 'bonifico') then
+        if (select (get_saldo(new.id_cliente))) < new.valuta then
+            signal sqlstate '45000' set message_text = 'tu non puoi ritirare i soldi'; -- rollback
+        end if;
+    end if $$
+
+delimiter ;
+
+call prelievo(1,200);
+
+call bonifico(1,2,50);
+
+select * from movimenti;
+
+select get_saldo(1) as saldo1;
+
+select get_saldo(2) as saldo2;
+
+call bonifico(1, 2, 200);

@@ -1,0 +1,13 @@
+banca dati telematica
+
+ufficio direttore : {1 computer,1 stampante}
+
+uffici giornalisti : {30 computer} (1 ufficio : 2 computer)
+
+ufficio redattori : {2 computer, 1 stampante}
+
+locale protetto: {server dati, server web}
+
+altri dispositivi mobili: {smartphone, laptop}
+
+1

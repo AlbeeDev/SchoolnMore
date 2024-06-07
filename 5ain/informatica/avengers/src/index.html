@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mappable Image Example</title>
+    <style>
+        .avngdiv{
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Avengers</h1>
+
+    <!-- Image element with a "usemap" attribute -->
+    
+    <img class="avngdiv" src="../assets/avengers.jpg" alt="avengers" usemap="#avengers">
+    
+    
+
+    <!-- Map element defining clickable area -->
+    <map name="avengers">
+        <area shape="rect" coords="0,0,175,360" href="./avengers/thor.html" alt="Thor">
+        <area shape="rect" coords="180,0,355,360" href="page2.html" alt="Rectangle 2">
+        <area shape="rect" coords="360,0,540,360" href="page3.html" alt="Rectangle 3">
+        <area shape="rect" coords="50,200,150,300" href="page4.html" alt="Rectangle 4">
+        <area shape="rect" coords="200,200,300,300" href="page5.html" alt="Rectangle 5">
+        <area shape="rect" coords="350,200,450,300" href="page6.html" alt="Rectangle 6">
+    </map>
+</body>
+</html>

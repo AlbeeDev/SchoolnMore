@@ -1,0 +1,115 @@
+1) Creare il Database con nome “5Aclassiscuola”.
+create database 5Aclassiscuola;
+
+2) Creare le tre tabelle.
+Tclassi(IDclasse, nome, piano, ala, aula)
+Tstudenti(IDstudente, cognome, nome, cittaresidenza, cittanascita, codnazionalita, datanascita, codclasse)
+Tnazionalità(IDnazionalita, nome)
+
+CREATE TABLE Tclassi (
+IDclasse INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+nome VARCHAR(50),
+piano VARCHAR(50),
+ala VARCHAR(50),
+aula VARCHAR(50)
+);
+
+CREATE TABLE Tstudenti (
+    IDstudente INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cognome VARCHAR(50),
+    nome VARCHAR(50),
+    cittaresidenza VARCHAR(50),
+    cittanascita VARCHAR(50), 
+    codnazionalita INT,
+    datanascita DATE,
+    codclasse INT
+);
+
+CREATE TABLE Tnazionalita (
+    IDnazionalita INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(50)
+);
+
+3) Popolare le tabelle anche tenendo conto delle richieste seguenti
+
+INSERT INTO Tclassi (nome, piano, ala, aula) VALUES
+("5AIN", "1", "destra", 39);
+
+INSERT INTO Tnazionalita (nome) VALUES
+("Italia");
+
+INSERT INTO Tstudenti (cognome, nome, cittaresidenza, cittanascita, codnazionalita, datanascita, codclasse)
+VALUES ('Rossi', 'Mario', 'Roma', 'Milano', 1, '2000-01-15', 1);
+
+4) Mostrare tutte gli studenti in ordine alfabetico
+5) Mostrare di tutte le classi nome e cognome degli alunni iscritti e la loro nazionalità
+
+select Tclassi.nome, Tstudenti.cognome, Tstudenti.nome, Tnazionalita.nome
+from Tclassi, Tstudenti, Tnazionalita
+where codnazionalita=IDnazionalita and codclasse=IDclasse
+order by Tclassi.nome, Tstudenti.cognome, Tstudenti.nome;
+
+6) Creare una nuova tabella con il risultato della query precedente
+7) Mostrare tutti gli studenti con nazionalità Giappone
+
+SELECT * FROM Tstudenti
+JOIN Tnazionalita ON Tstudenti.codnazionalita = Tnazionalita.IDnazionalita
+WHERE Tnazionalita.nome = 'Giappone';
+
+8) Mostrare le nazionalità che non sono associate ad alunni
+
+SELECT * FROM Tnazionalita
+WHERE IDnazionalita NOT IN (SELECT codnazionalita FROM Tstudenti);
+
+9) Cercare le classi che non sono al piano terra
+
+SELECT * FROM Tclassi
+WHERE piano != '0';
+
+10) Cercare l’aula con identificativo più alto
+
+SELECT * FROM Tclassi
+ORDER BY IDclasse DESC
+LIMIT 1;
+
+11) Cercare le classi dell’ala nord
+
+SELECT * FROM Tclassi
+WHERE ala = 'nord';
+
+12) Cercare gli studenti con meno di 18 anni (vedi current_date, to_days)
+
+SELECT * FROM Tstudenti
+WHERE TO_DAYS(CURRENT_DATE) - TO_DAYS(datanascita) < 18 * 365;
+
+13) Mostrare cognome, nome degli studenti di una classe (dato il nome)
+
+SELECT cognome, nome FROM Tstudenti
+JOIN Tclassi ON Tstudenti.codclasse = Tclassi.IDclasse
+WHERE Tclassi.nome = '5AIN';
+
+14) Le classi di un piano ordinate per aula
+
+SELECT * FROM Tclassi
+WHERE piano = '1'
+ORDER BY aula;
+
+15) Tutti gli studenti raggruppati (ordinati) per classe ordinati ordine alfabetico
+
+SELECT Tclassi.nome, Tstudenti.cognome, Tstudenti.nome
+FROM Tstudenti
+JOIN Tclassi ON Tstudenti.codclasse = Tclassi.IDclasse
+ORDER BY Tclassi.nome, Tstudenti.cognome, Tstudenti.nome;
+
+16) Tutti gli studenti di classi terzo piano ala ovest che risiedono a Ravenna
+
+SELECT Tstudenti.*
+FROM Tstudenti
+JOIN Tclassi ON Tstudenti.codclasse = Tclassi.IDclasse
+WHERE Tclassi.piano = '3' AND Tclassi.ala = 'ovest' AND Tstudenti.cittaresidenza = 'Ravenna';
+
+17) Gli studenti che non hanno una classe (ASSURDO NON C’È PARZIALITA MA
+SAREBBE codclasse is NULL)
+
+SELECT * FROM Tstudenti
+WHERE codclasse IS NULL;

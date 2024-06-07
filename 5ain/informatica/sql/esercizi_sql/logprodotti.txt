@@ -1,0 +1,97 @@
+create database logprodotti;
+
+use logprodotti;
+
+create table prodotti(
+    id int primary key auto_increment,
+    nome varchar(20),
+    quantita int
+);
+
+
+create table log(
+    id int primary key auto_increment,
+    nome varchar(20)
+);
+
+delimiter $$
+
+create function get_average()
+returns decimal
+begin
+return (select avg(quantita) from prodotti);
+end;
+
+delimiter ;
+
+delimiter $$
+
+create procedure log_products()
+begin
+    declare average decimal;
+    set average=get_average();
+
+    delete from log
+    where exists (
+      select 1 -- ritorna valido per ogni riga che soddisfa la condizione applicata
+      from prodotti p
+      where p.nome = log.nome and p.quantita >= average
+    );
+
+    insert into log (nome)
+    select p.nome
+    from prodotti p
+    where p.quantita < average
+    and not exists (  -- se la select ritorna almeno un risultato allora not exists
+        select 1
+        from log l
+        where l.nome = p.nome
+    );
+end;
+
+delimiter ;
+
+delimiter $$
+
+create trigger check_for_updates
+after update on prodotti
+for each row
+begin
+    call log_products();
+end$$
+
+delimiter ;
+
+delimiter $$
+
+create trigger check_for_insert
+after insert on prodotti
+for each row
+begin
+    call log_products();
+end$$
+
+delimiter ;
+
+insert into prodotti(nome, quantita)
+values
+('banane',1),
+('pere',2),
+('arance',3),
+('mango',4),
+('mele',5);
+
+select *, get_average() as media from prodotti;
+
+select log.nome, quantita, get_average() as media from log
+join prodotti p on log.nome = p.nome;
+
+update prodotti set quantita=100 where nome='banane';
+
+select log.nome, quantita, get_average() as media from log
+join prodotti p on log.nome = p.nome;
+
+update prodotti set quantita=1 where nome='banane';
+
+select log.nome, quantita, get_average() as media from log
+join prodotti p on log.nome = p.nome;

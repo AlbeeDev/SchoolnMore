@@ -1,0 +1,36 @@
+{
+    "europei_germania_2024": {
+        "nazionali": [
+            {
+                "nazionale_id": 1,
+                "nome": "Nazionale A",
+                "giocatori": [
+                    {
+                        "giocatore_id": 0,
+                        "nome_cognome": "Giocatore 1",
+                        "gol_totali": 0,
+                        "id_nazione":0
+                    }
+                ],
+                "partite": [
+                    {
+                        "partita_id": 0,
+                        "risultato": "",
+                        "data": "YYYY-MM-DD",
+                        "stadio": "Nome Stadio",
+                        "tipo": "Girone A",
+                        "nazionale_id_A": 1,
+                        "nazionale_id_B": 2,
+                        "gol": [
+                            {
+                                "gol_id": 0,
+                                "minuto": 10,
+                                "marcatore_id": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
