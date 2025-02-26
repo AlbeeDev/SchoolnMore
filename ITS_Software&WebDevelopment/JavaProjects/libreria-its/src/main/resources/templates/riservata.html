@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Area Riservata Cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body style="overflow-x: hidden" class="container">
+<div class="container">
+    <nav class="bg-primary p-4 text-center ">
+        <a class="fs-4 text-white me-4" th:href="@{/}">Home</a>
+        <a class="fs-4 text-white me-4" th:href="@{/riservata/logout}" th:text="|Logout ${cliente.profilo.username}|"></a>
+    </nav>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-9">
+        <h4 class="text-center" th:text="${cliente.carrello != null ? 'Carrello' : 'Non hai un carrello'}"></h4>
+        <table th:if="${cliente.carrello != null}" class="table table-striped border border-dark">
+            <tr th:each="libroCarrello : ${cliente.carrello.libriCarrello}">
+                <td th:text="${libroCarrello.libro.titolo}">Titolo Libro</td>
+                <td class="text-end" th:text="|${#numbers.formatDecimal(libroCarrello.libro.prezzo, 0, 'POINT', 2, 'COMMA')} Euro|">Prezzo Libro</td>
+                <td>
+                    <a th:class="|btn btn-sm btn-outline-danger ${libroCarrello.numeroCopie == 1 ? 'disabled' : ''}| " th:href="@{/riservata/modifica(id=${libroCarrello.id}, op='minus')}">-</a>
+                    <label class="ms-2 me-2" th:text="${libroCarrello.numeroCopie}">1</label>
+                    <a class="btn btn-sm btn-outline-success" th:href="@{/riservata/modifica(id=${libroCarrello.id}, op='plus')}">+</a>
+                </td>
+                <td class="text-end" th:text="|${#numbers.formatDecimal(libroCarrello.libro.prezzo * libroCarrello.numeroCopie, 0, 'POINT', 2, 'COMMA')} Euro|">Prezzo totale</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-danger" th:href="@{/riservata/rimuovi(id=${libroCarrello.id})}">Rimuovi</a>
+                </td>
+            </tr>
+        </table>
+        <div th:if="${cliente.carrello != null}" class="text-end mt-3">
+            <h5 th:text="|Totale: ${#numbers.formatDecimal(totaleCarello, 0, 'POINT', 2, 'COMMA')} Euro|">Totale Carrello</h5>
+            <a th:href="@{/riservata/conferma}" class="btn btn-primary">Conferma Ordine</a>
+            <h5 th:if="${esito != null}" th:class="${esito.equals('ordine confermato') ? 'text-success' : 'text-danger'} + ' text-center'" th:text="${esito}"></h5>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-8">
+        <h4 class="text-center">Ordini confermati</h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="text-center">Data e Ora</th>
+                <th class="text-center">Totale ordine</th>
+                <th class="text-center">Dettaglio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ordine : ${cliente.ordini}">
+                <td th:text="${#temporals.format(ordine.ricezione, 'dd-MM-yyyy HH:mm')}" class="text-center">Data e Ora</td>
+                <td th:text="|${#numbers.formatDecimal(ordine.totale, 0, 'POINT', 2, 'COMMA')} Euro|"
+                    class="text-center">Totale ordine</td>
+                <td class="text-center">
+                    <a class="btn btn-sm btn-outline-primary" th:href="@{/dettaglio(id=${ordine.getLibriOrdine()})}">Dettaglio</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr>
+
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-4 p-4 border">
+        <form class="form-group" th:object="${cliente}" method="post">
+            <h4 class="text-center">Profilo Cliente</h4>
+            <input type="hidden" th:field="*{id}">
+            <input type="text" th:field="*{nome}" class="form-control mt-3" required placeholder="nome">
+            <small class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></small>
+            <input type="text" th:field="*{cognome}" class="form-control mt-3" required placeholder="cognome">
+            <small class="text-danger" th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></small>
+            <input type="hidden" th:field="*{profilo.id}">
+            <input type="text" th:field="*{profilo.username}" class="form-control mt-3" readonly placeholder="username">
+            <input id="pwd" type="text" th:field="*{profilo.password}" class="form-control mt-3" required placeholder="password">
+            <button type="button" id="pwdBtn" class="btn btn-sm btn-warning mt-1">Mostra/Nascondi Password</button>
+            <small class="text-danger" th:if="${#fields.hasErrors('profilo.password')}" th:errors="*{profilo.password}"></small>
+            <input th:each="ordine, stat : *{ordini}" th:field="*{ordini[__${stat.index}__].id}" type="hidden">
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-success">Aggiorna Profilo</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<hr>
+
+<h4 class="text-center mt-4">
+    <a th:href="@{/riservata/elimina}" class="btn btn-lg btn-danger">Elimina Profilo</a>
+</h4>
+<h5 class="text-center text-danger mt-4" th:if="${cancellazione != null}" th:text="${cancellazione}"></h5>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let pwd = document.getElementById('pwd');
+        pwd.type = "password";
+    });
+
+    const pwdBtn = document.getElementById('pwdBtn');
+    pwdBtn.addEventListener('mouseover', ()=>{
+        pwd.type="text";
+    })
+    pwdBtn.addEventListener('mouseout', ()=>{
+        pwd.type="password";
+    })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

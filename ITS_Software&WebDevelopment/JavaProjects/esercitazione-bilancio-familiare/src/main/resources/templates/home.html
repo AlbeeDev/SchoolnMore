@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Bilancio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="container pb-5">
+    <div class="row mt-4">
+        <div class="col">
+            <h2>Bilancio Attuale: <span th:text="${bilancio}+' Euro'" th:class="${bilancio < 0 ? 'text-danger' : 'text-success'}">3450 Euro</span></h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col">
+            <h3>Storico Operazioni</h3>
+        </div>
+        <div class="col text-end">
+            <h3 th:text="'Totale Operazioni: '+${operazioni.size()}"></h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col">
+            <table class="table table-striped border">
+                <thead>
+                    <tr class="text-center">
+                        <th>Importo</th>
+                        <th>Descrizione</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="operazione : ${operazioni}" class="align-middle text-center">
+                        <td th:text="${operazione.importo}+' Euro'" th:class="${operazione.importo < 0 ? 'text-danger' : 'text-success'}+' text-end'">12$</td>
+                        <td th:text="${operazione.descrizione}">test</td>
+                        <td th:text="${operazione.data}">test</td>
+                        <td>
+                            <button th:value="${operazione.descrizione}+'@'+${operazione.id}" class="btn btn-sm btn-outline-danger me-2 elimina">Elimina</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a th:href="@{/operazioni}" class="btn btn-outline-warning">Aggiungi Operazione</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const deleteBtns = document.querySelectorAll(".elimina")
+    deleteBtns.forEach((btn)=>{
+        btn.addEventListener('click', function (){
+            const valori = this.getAttribute('value')
+            const [descrizione, id] = valori.split('@')
+            const conferma = confirm("Sei sicuro di voler cancellare operazione: "+descrizione)
+            if (conferma) {
+                window.location.href= "/elimina?id="+id;
+            }
+        })
+    })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

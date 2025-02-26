@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina 2</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body style="color: white">
+    <h1>sei in Pagina 2 </h1>
+    <a th:href="@{/uno(nome=${nome})}">torna in pagina 1</a>
+
+    <p th:if="${eta >= 18}">area maggiorenni</p>
+</body>
+</html>

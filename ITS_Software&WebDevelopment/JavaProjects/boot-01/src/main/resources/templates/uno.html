@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina 1</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body style="background-color: black; color: white;">
+    <h1>benvenuto in Pagina 1 </h1>
+    <h2 th:text="${nome}"></h2>
+    <h3 th:text="'benvenuto '+${nome}"></h3>
+    <h3 th:text="|benvenuto ${nome}|"></h3>
+    <img th:src="@{images/emotefaz.jpg}" alt="none">
+
+    <a th:href="@{/due(nome=${nome})}">pagina 2</a>
+</body>
+</html>

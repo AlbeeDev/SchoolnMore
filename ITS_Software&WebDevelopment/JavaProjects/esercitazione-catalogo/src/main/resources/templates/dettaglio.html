@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Model 1 - Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <a class="navbar-brand" th:href="@{/}">Phone Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+
+<div class="container mt-5">
+    <h1 th:text="${articolo.marchio}+' '+${articolo.modello}" class="text-center">Phone Model 1</h1>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <img th:src="@{images/{image}(image=${articolo.image})}" class="img-fluid" alt="Phone Model 1">
+        </div>
+        <div class="col-md-6">
+            <h3 th:text="'Price: EUR '+${articolo.prezzo}"></h3>
+            <p><strong>Description: </strong><span th:text="${articolo.descrizione}"> The Phone Model 1 is a state-of-the-art smartphone featuring a sleek design, powerful performance, and an exceptional camera system.</span></p>
+            <h4>Specifications:</h4>
+            <ul>
+                <li th:text="'Operating System: '+${articolo.os}"></li>
+                <li th:text="'Memory: '+${articolo.memoria}"></li>
+            </ul>
+            <a th:href="@{/}" class="btn btn-primary">Back to Store</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

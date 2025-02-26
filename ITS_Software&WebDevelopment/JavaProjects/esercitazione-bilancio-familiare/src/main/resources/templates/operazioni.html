@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Aggiungi Operazione</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-5">
+            <h4 class="text-center">Aggiungi Operazione</h4>
+            <form method="post" th:object="${operazione}">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group mt-4">
+                    <label for="importo">Inserisci Importo</label>
+                    <input th:field="*{importo}" type="number" step="any" name="importo" id="importo" class="form-control" placeholder="es. 250">
+                    <small class="text-danger" th:if="${#fields.hasErrors('importo')}" th:errors="*{importo}"></small>
+                </div>
+                <div class="form-group mt-4">
+                    <label for="descrizione">Inserisci Descrizione</label>
+                    <input th:field="*{descrizione}" type="text" name="descrizione" id="descrizione" class="form-control" placeholder="es. Entrata per Stipendio">
+                    <small class="text-danger" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></small>
+                </div>
+                <div class="form-group mt-4">
+                    <label for="data">Inserisci Data</label>
+                    <input th:field="*{data}" type="date" name="data" id="data" class="form-control" placeholder="data">
+                    <small class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></small>
+                </div>
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-warning">Conferma</button>
+                    <a th:href="@{/}" class="btn btn-secondary">Torna Al Bilancio</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

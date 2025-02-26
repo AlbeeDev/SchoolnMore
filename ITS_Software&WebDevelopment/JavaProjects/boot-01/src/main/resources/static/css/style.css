@@ -1,0 +1,7 @@
+h1 {
+    color: purple !important;
+}
+body {
+    background-image: linear-gradient(to bottom right, black, purple);
+    height: 97vh;
+}

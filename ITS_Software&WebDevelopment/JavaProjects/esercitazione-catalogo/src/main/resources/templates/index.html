@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            /*background-color: #f8f9fa;*/
+        }
+        .card {
+            margin: 20px;
+        }
+        .card-img-top {
+            height: 300px; /* Set a fixed height */
+            object-fit: scale-down; /* Maintain aspect ratio and cover the area */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <a class="navbar-brand" th:href="@{/}">Phone Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="text-center">Available Phones</h1>
+    <div class="row mt-4">
+        <div th:each="articolo : ${articoli}" class="col-md-4">
+            <div class="card shadow">
+                <div class="mt-4"></div>
+                <img th:src="@{images/{image}(image=${articolo.image})}" class="card-img-top" alt="Phone 1">
+                <div class="card-body">
+                    <h5 th:text="${articolo.modello}" class="card-title">Phone Model 1</h5>
+                    <a th:href="@{/dettaglio(id=${articolo.id})}" class="btn btn-primary">See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
